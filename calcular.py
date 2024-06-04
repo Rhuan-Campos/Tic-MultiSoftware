@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 import requests
 import functions as func  # Importar as funções personalizadas do arquivo functions.py
-
+#
 # Função para obter os dados da API usando a função definida em functions.py
 print("Carregando dados da API...")
 df = func.get_data_by_column('MDF', 'MDF_DATA_EMISSAO,MDF_DATA_AUTORIZACAO')
