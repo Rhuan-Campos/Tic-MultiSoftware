@@ -3,6 +3,8 @@ import requests
 import pandas as pd
 import altair as alt
 
+dataFrame = st.session_state['data']
+
 image_logo = "assets/MultiCTe.png"
 st.set_page_config(page_title="MultiCTe", page_icon=image_logo, layout="wide")
 
