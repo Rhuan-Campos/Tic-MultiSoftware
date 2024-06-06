@@ -1,6 +1,4 @@
 import pandas as pd
-import matplotlib.pyplot as plt
-from datetime import datetime
 import streamlit as st
 
 # Supomos que o DataFrame já está carregado em st.session_state['data']
@@ -9,21 +7,14 @@ df = st.session_state['data']
 # Converter as colunas de data e hora para o tipo datetime
 df['MDF_DATA_EMISSAO'] = pd.to_datetime(df['MDF_DATA_EMISSAO'])
 df['MDF_DATA_AUTORIZACAO'] = pd.to_datetime(df['MDF_DATA_AUTORIZACAO'])
-df.info()  # Ver se está convertendo certo
+#df.info()  Ver se está convertendo certo
 
 # Calcular o tempo de autorização em minutos
 df['Tempo_Autorizacao_Minutos'] = (df['MDF_DATA_AUTORIZACAO'] - df['MDF_DATA_EMISSAO']).dt.total_seconds() / 60
 
 # Estatísticas Descritivas
-estatisticas_descritivas = df['Tempo_Autorizacao_Minutos'].describe()
-st.write(estatisticas_descritivas)
-
-# Histograma para visualização
-plt.hist(df['Tempo_Autorizacao_Minutos'], bins=50, edgecolor='black')
-plt.title('Distribuição do Tempo de Autorização')
-plt.xlabel('Tempo de Autorização (minutos)')
-plt.ylabel('Frequência')
-st.pyplot(plt)
+#estatisticas_descritivas = df['Tempo_Autorizacao_Minutos'].describe()
+#st.write("Estatísticas Descritivas:", estatisticas_descritivas)
 
 # Funções de manipulação de dados
 def validar_e_formatar_data(data_str):
@@ -108,12 +99,9 @@ calcular_diferenca_tempo(df, 'MDF_DATA_EMISSAO', 'MDF_DATA_AUTORIZACAO', 'Tempo_
 # Converter a diferença de tempo para minutos para o histograma
 df['Tempo_Autorizacao_Minutos'] = df['Tempo_Autorizacao'].dt.total_seconds() / 60
 
-# Histograma para visualização
-plt.hist(df['Tempo_Autorizacao_Minutos'], bins=50, edgecolor='black')
-plt.title('Distribuição do Tempo de Autorização')
-plt.xlabel('Tempo de Autorização (minutos)')
-plt.ylabel('Frequência')
-st.pyplot(plt)
+# Histograma para visualização usando Streamlit
+#st.write("Histograma do Tempo de Autorização")
+#st.bar_chart(df['Tempo_Autorizacao_Minutos'].value_counts().sort_index())
 
 # Filtrar valores negativos e outliers (limitar ao intervalo razoável de 0 a 100 minutos)
 df_filtrado = df[(df['Tempo_Autorizacao_Minutos'] >= 0) & (df['Tempo_Autorizacao_Minutos'] <= 100)]
@@ -121,43 +109,40 @@ df_filtrado = df[(df['Tempo_Autorizacao_Minutos'] >= 0) & (df['Tempo_Autorizacao
 # Recalcular as estatísticas descritivas
 estatisticas_descritivas_filtradas = df_filtrado['Tempo_Autorizacao_Minutos'].describe()
 
-# Novo histograma para visualização
-plt.hist(df_filtrado['Tempo_Autorizacao_Minutos'], bins=50, edgecolor='black')
-plt.title('Distribuição do Tempo de Autorização (Filtrada)')
-plt.xlabel('Tempo de Autorização (minutos)')
-plt.ylabel('Frequência')
-st.pyplot(plt)
+# Novo histograma para visualização usando Streamlit
+#st.write("Novo Histograma do Tempo de Autorização (Filtrada)")
+#st.bar_chart(df_filtrado['Tempo_Autorizacao_Minutos'].value_counts().sort_index())
 
 # Imprimir estatísticas descritivas filtradas
-st.write("Estatísticas descritivas filtradas:")
-st.write(estatisticas_descritivas_filtradas)
+#st.write("Estatísticas descritivas filtradas:")
+#st.write(estatisticas_descritivas_filtradas)
 
 # Nova Análise Mensal
 filtrado_Mes = filtrar_por_mes(df_filtrado, 'MDF_DATA_EMISSAO', 2020, 3)
-st.write("Nova Análise Mensal:")
-st.write(filtrado_Mes)
+#st.write("Nova Análise Mensal:")
+#st.write(filtrado_Mes)
 
 # Nova Análise Trimestral
 filtrado_Tri = filtrar_por_trimestre(df_filtrado, 'MDF_DATA_EMISSAO', 2020, 1)
-st.write("Nova Análise Trimestral:")
-st.write(filtrado_Tri)
+#st.write("Nova Análise Trimestral:")
+#st.write(filtrado_Tri)
 
 # Nova Análise Semestral
 filtrado_Semestral = filtrar_por_semestre(df_filtrado, 'MDF_DATA_EMISSAO', 2020, 1, 'Semestre')
-st.write("Nova Análise Semestral:")
-st.write(filtrado_Semestral)
+#st.write("Nova Análise Semestral:")
+#st.write(filtrado_Semestral)
 
 # Nova Análise Anual
 filtrado_Anual = filtrar_por_ano(df_filtrado, 'MDF_DATA_EMISSAO', 2020)
-st.write("Nova Análise Anual:")
-st.write(filtrado_Anual)
+#st.write("Nova Análise Anual:")
+#st.write(filtrado_Anual)
 
 # Nova Análise por Período
 filtrado_Periodo = filtrar_por_periodo(df_filtrado, 'MDF_DATA_EMISSAO', '2020-01-01', '2020-04-01')
-st.write("Nova Análise por Período:")
-st.write(filtrado_Periodo)
+#st.write("Nova Análise por Período:")
+#st.write(filtrado_Periodo)
 
 # Adicionar colunas de Ano, Semestre e Mês
 df_com_colunas = criar_colunas_ano_semestre_mes(df_filtrado, 'MDF_DATA_EMISSAO')
-st.write("Adicionando colunas de Ano, Semestre e Mês:")
-st.write(df_com_colunas.head())
+#st.write("Adicionando colunas de Ano, Semestre e Mês:")
+#st.write(df_com_colunas.head())
