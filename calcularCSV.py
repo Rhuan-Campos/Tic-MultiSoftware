@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+import numpy as np
 
 # Supomos que o DataFrame já está carregado em st.session_state['data']
 df = st.session_state['data']
@@ -146,3 +147,36 @@ filtrado_Periodo = filtrar_por_periodo(df_filtrado, 'MDF_DATA_EMISSAO', '2020-01
 df_com_colunas = criar_colunas_ano_semestre_mes(df_filtrado, 'MDF_DATA_EMISSAO')
 #st.write("Adicionando colunas de Ano, Semestre e Mês:")
 #st.write(df_com_colunas.head())
+
+#Desvio padrão
+
+def encontrar_e_mostrar_outliers(df, coluna):
+    """
+    Esta função identifica e exibe outliers de uma coluna específica de um DataFrame,
+    além de gerar um gráfico de linha para visualizar os outliers.
+
+    Parâmetros:
+    df (pandas.DataFrame): O DataFrame contendo os dados.
+    coluna (str): O nome da coluna para identificar os outliers.
+
+    Retorna:
+    pandas.DataFrame: Um DataFrame contendo os outliers.
+    """
+    # Calcular os quartis e os limites para identificar os outliers
+    Q1 = df[coluna].quantile(0.25)
+    Q3 = df[coluna].quantile(0.75)
+    IQR = Q3 - Q1
+
+    lim_inferior = Q1 - 1.5 * IQR
+    lim_superior = Q3 + 1.5 * IQR
+
+    # Identificar os outliers
+    outliers = df[(df[coluna] < lim_inferior) | (df[coluna] > lim_superior)]
+    
+    #st.write(f"Outliers encontrados na coluna {coluna}:")
+    #st.write(outliers)
+
+    # Adicionar uma coluna indicando se o valor é outlier
+    df['Outlier'] = np.where((df[coluna] < lim_inferior) | (df[coluna] > lim_superior), 'Outlier', 'Normal')
+
+    return outliers

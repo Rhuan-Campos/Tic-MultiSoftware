@@ -271,3 +271,38 @@ print(filtrado_Periodo)
 print("Adicionando colunas de Ano, Semestre e Mês:")
 df_com_colunas = criar_colunas_ano_semestre_mes(df_filtrado, 'MDF_DATA_EMISSAO')
 print(df_com_colunas.head())
+
+
+
+#Desvio padrão
+def encontrar_e_mostrar_outliers(df, coluna):
+    """
+    Esta função identifica e exibe outliers de uma coluna específica de um DataFrame.
+
+    Parâmetros:
+    df (pandas.DataFrame): O DataFrame contendo os dados.
+    coluna (str): O nome da coluna para identificar os outliers.
+
+    Retorna:
+    pandas.DataFrame: Um DataFrame contendo os outliers.
+    """
+    # Calcular os quartis e os limites para identificar os outliers
+    Q1 = df[coluna].quantile(0.25)
+    Q3 = df[coluna].quantile(0.75)
+    IQR = Q3 - Q1
+
+    lim_inferior = Q1 - 1.5 * IQR
+    lim_superior = Q3 + 1.5 * IQR
+
+    # Identificar os outliers
+    outliers = df[(df[coluna] < lim_inferior) | (df[coluna] > lim_superior)]
+    print(f"Outliers encontrados na coluna {coluna}:")
+    print(outliers)
+
+    # Visualizar os outliers com um boxplot
+    plt.figure(figsize=(10, 6))
+    sns.boxplot(x=df[coluna])
+    plt.title(f'Boxplot da Coluna {coluna}')
+    plt.show()
+
+    return outliers
