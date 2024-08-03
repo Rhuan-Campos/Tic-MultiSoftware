@@ -1,0 +1,357 @@
+* {
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+/* Gustavo CSS */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"], select, input[type="color"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#charts {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chart-container {
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.chart-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.chart-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.chart-actions button:hover {
+    color: #007bff;
+}
+
+.resizer {
+    width: 10px;
+    height: 10px;
+    background: #007bff;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: se-resize;
+}
+
+/* Terminou */
+
+body {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    font-size: .875rem;
+    background: black;
+    color: #ffffff;
+}
+
+h3 {
+    font-size: 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+}
+
+h3, p {
+    color: black;
+}
+
+p, option, input{
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 350;
+    margin-bottom: .5rem;
+    line-height: 1.3rem;
+}
+
+.sidebar.hidden {
+    display: none;
+}
+.sidebar-off.hidden {
+    display: none;
+}
+
+#menu {
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 25px; 
+    height: 25px; 
+    cursor: pointer;
+}
+
+.sidebar {
+    width: 260px;
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 20px 30px;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+#close-sidebar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    padding: 5%;
+    font-size: 16px;
+}
+
+#profile {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    padding-top: 50px;
+}
+
+.sidebar img {
+    width: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar #dashboard, #personalizar {
+    width: 220px;
+    border-radius: 8px;
+    border: 1px solid #242323; 
+    margin-bottom: 8px;
+    padding: 10px; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Adiciona transição suave para hover */
+}
+
+.sidebar #dashboard:hover, .sidebar #personalizar:hover {
+    background-color: #c9c5c5; 
+    transform: translateY(-5px); 
+}
+
+.menu div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 10px; 
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Adiciona transição suave para hover */
+}
+
+.menu div:hover {
+    background-color: #000000; 
+    transform: translateY(-5px); 
+}
+
+.menu img {
+    max-width: 50px; 
+    margin-left: 8px; 
+}
+
+.menu p {
+    margin: 0;
+    text-align: left; 
+    flex: 1; 
+    padding-right: 10px; 
+}
+
+
+#personalizar-section {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    width: 260px;
+    background-color: #ffffff;
+    position: fixed;
+    top: 50%; 
+    right: 0;
+    transform: translateY(-50%); 
+    border-radius: 10px;
+    padding: 20px 30px;
+    overflow-y: auto;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+
+#close-personalizar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    width: 15px; 
+    height: 15px; 
+    font-size: 16px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+#close-personalizar:hover {
+    background-color: #ddd;
+}
+
+#personalizar-section.hidden {
+    display: none;
+}
+
+
+.main-content {
+    margin-right: 260px;
+    padding: 20px;
+}
+
+.chart-container {
+    margin-bottom: 20px;
+}
+
+input, select, option {
+    font-family: 'Noto Sans', sans-serif; 
+    font-weight: 350; 
+    font-size: 15px; 
+    border: 1px solid #000; 
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px; 
+    width: 100%;
+    transition: background-color 0.3s, border-color 0.3s;
+    background-color: #ffffff; 
+}
+
+input:focus, select:focus {
+    border-color: #000; 
+    outline: none;
+    background-color: #e0e0e0; 
+}
+
+input:hover, select:hover {
+    background-color: #d7d4d4; 
+}
+
+#searchColumn {
+    border: 1px solid #000; 
+}
+
+.inputColor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%; 
+    max-width: 400px; 
+    margin: 0 auto; 
+}
+
+
+#p-colorPicker{
+    color: black;
+    font-family: 'Lato';
+    font-size: 15px;
+    font-weight: 350;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+#colorPicker {
+    display: none; 
+}
+
+#colorDisplay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: 10px; 
+    margin-bottom: 10px;
+    border: 2px solid #000; 
+    background-color: red; 
+    display: inline-block;
+    margin-bottom: 10px; 
+}
+
+#addChartButton { 
+    padding: 5px;
+    margin-top: 10px;
+    background-color: #000; 
+    color: #fff; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#addChartButton:hover {
+    background-color: #333; 
+}
+#map {
+    height: 500px; /* Ajuste conforme necessário */
+    width: 100%;   /* Ajuste conforme necessário */
+    border: 1px solid #ccc; /* Opcional: para visualização */
+}

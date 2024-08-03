@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torre de Monitoramento</title>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.10.11/interact.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        .hidden { display: none; }
+        .personalizar-section { padding: 20px; }
+        .chart-container { margin-bottom: 20px; }
+        #charts { padding: 20px; }
+        #colorDisplay { width: 30px; height: 30px; border: 1px solid #000; cursor: pointer; }
+        .inputColor { display: flex; align-items: center; gap: 10px; }
+        #map { height: 400px; width: 100%; }
+    </style>
+</head>
+<body>
+    <div class="sidebar-off">
+        <img src="/assets/sidebar.png" alt="menu" id="menu">
+    </div>
+
+    <div class="sidebar">
+        <img src="/assets/close.png" alt="fechar" id="close-sidebar">
+        
+        <img src="/assets/multiTMS.png" alt="logo MultiSoftware" id="profile">
+        <h3>Menu</h3>
+        <div class="menu">
+            <button id="dashboard">
+                <a href="javascript:void(0)"><i class="icon-dash"></i></a>
+                <img src="/assets/dashboard.png" alt="icon de widget"> 
+                <p>Dashboard</p>
+            </button>
+            
+            <button id="personalizar">
+                <a href="javascript:void(0)"><i class="icon-personalizar"></i></a>
+                <img src="/assets/estilo.png" alt="icon de estilo">
+                <p>Personalizar</p>
+            </button>
+        </div>
+    </div>
+
+    <div id="personalizar-section" class="personalizar-section hidden">
+        <img src="/assets/close.png" alt="fechar" id="close-personalizar">
+
+        <input type="text" id="searchColumn" placeholder="Pesquisar coluna..." />
+        <select id="columnSelect">
+        
+        <label for="columnSelect">Selecione a coluna:</label>
+        <select id="columnSelect">
+            <option value="" disabled selected>Escolha uma coluna</option>
+        </select>
+        
+        <label for="chartTypeSelect">Selecione o modelo de gráfico:</label>
+        <select id="chartTypeSelect">
+            <option value="Select">Selecione o modelo de gráfico</option>
+            <option value="bar">Barra</option>
+            <option value="line">Linha</option>
+            <option value="pie">Pizza</option>
+            <option value="area">Área</option>
+            <option value="scatter">Dispersão</option>
+            <option value="radar">Radar</option>
+            <option value="heatmap">Heatmap</option>
+            <option value="candlestick">Candlestick</option>
+            <option value="boxPlot">Boxplot</option>
+            <option value="map">Mapa</option> <!-- Nova opção de gráfico para o mapa -->
+        </select>
+        
+        <div class="inputColor">
+            <label for="colorPicker" id="p-colorPicker">Selecione a cor do gráfico:</label>
+            <div id="colorDisplay"></div>
+            <input type="color" id="colorPicker" name="colorPicker">
+        </div>
+
+        <button id="addChartButton">Adicionar Gráfico</button>
+    </div>
+
+    <div id="charts"></div>
+
+    <!-- Inclusão do Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <script src="main.js" defer></script>
+</body>
+</html>
