@@ -15,12 +15,16 @@ app.add_middleware(
 )
 
 # Carregar o CSV em um DataFrame do pandas
-csv_path = r"C:\Users\Softex\Desktop\Nova pasta\CTE - Copia.csv"
+csv_path = r"C:\Users\Softex\Desktop\banco de daods\CTE - Copia.csv"
 df = pd.read_csv(csv_path)
 
 # Classe para o modelo de dados
 class DataFrameData(BaseModel):
     data: list
+
+@app.get("/")
+def read_root():
+    return {"A API está funcionando."}
 
 # Endpoint para obter os nomes das colunas
 @app.get("/columns")
