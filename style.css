@@ -4,32 +4,13 @@
     font-style: normal;
 }
 
-/* Gustavo CSS */
-
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    padding: 0;
     margin: 0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.container {
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    border-radius: 8px;
-    width: 100%;
-    max-width: 800px;
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
+    overflow-x: hidden;
+    font-size: .875rem;
+    background: rgb(219, 218, 218);
+    color: #ffffff;
 }
 
 input[type="text"], select, input[type="color"] {
@@ -41,63 +22,6 @@ input[type="text"], select, input[type="color"] {
     box-sizing: border-box;
 }
 
-#charts {
-    width: 100%;
-    max-width: 800px;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.chart-container {
-    width: 100%;
-    margin-bottom: 20px;
-    position: relative;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
-    background-color: #fff;
-}
-
-.chart-actions {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    gap: 10px;
-}
-
-.chart-actions button {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.chart-actions button:hover {
-    color: #007bff;
-}
-
-.resizer {
-    width: 10px;
-    height: 10px;
-    background: #007bff;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    cursor: se-resize;
-}
-
-/* Terminou */
-
-body {
-    padding: 0;
-    margin: 0;
-    overflow-x: hidden;
-    font-size: .875rem;
-    background: black;
-    color: #ffffff;
-}
 
 h3 {
     font-size: 20px;
@@ -111,7 +35,7 @@ h3, p {
     color: black;
 }
 
-p, option, input{
+p{
     font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
     font-weight: 350;
@@ -122,6 +46,7 @@ p, option, input{
 .sidebar.hidden {
     display: none;
 }
+
 .sidebar-off.hidden {
     display: none;
 }
@@ -145,9 +70,79 @@ p, option, input{
     padding: 20px 30px;
     overflow-y: auto;
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    transition: background-color 0.3s, color 0.3s;
+    z-index: 2000;
 }
 
-#close-sidebar {
+.sidebar.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.sidebar.dark-mode {
+    background-color: #000000;
+    color: #ffffff;
+}
+.sidebar.dark-mode h3{
+    color: #fff;
+}
+
+#dark-mode, #light-mode {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    position: fixed;
+    top: 23px;
+    left: 10px;
+    display: none;
+}
+
+#dark-mode {
+    display: block;
+}
+
+.sidebar.dark-mode #dark-mode {
+    display: none;
+}
+
+.sidebar.dark-mode #light-mode {
+    display: block;
+}
+
+.sidebar.light-mode #dark-mode {
+    display: block;
+}
+
+.sidebar.light-mode #light-mode {
+    display: none;
+}
+
+#d-expandir, #w-expandir{
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    display: none;
+}
+
+.light-mode #d-expandir {
+    display: none;
+}
+
+.light-mode #w-expandir {
+    display: block;
+}
+
+.dark-mode #w-expandir {
+    display: none;
+}
+.dark-mode #d-expandir {
+    display: block;
+}
+
+#d-close-sidebar, #w-close-sidebar {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -155,7 +150,22 @@ p, option, input{
     border: none;
     border-radius: 3px;
     padding: 5%;
-    font-size: 16px;
+    width: 25px;
+    height: 20px;
+}
+
+.light-mode #d-close-sidebar {
+    display: block;
+}
+.light-mode #w-close-sidebar {
+    display: none;
+}
+
+.dark-mode #w-close-sidebar {
+    display: block;
+}
+.dark-mode #d-close-sidebar {
+    display: none;
 }
 
 #profile {
@@ -164,6 +174,7 @@ p, option, input{
     align-items: center;
     padding: 10px;
     padding-top: 50px;
+
 }
 
 .sidebar img {
@@ -195,7 +206,7 @@ p, option, input{
     align-items: center;
     justify-content: space-between; 
     padding: 10px; 
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Adiciona transição suave para hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; 
 }
 
 .menu div:hover {
@@ -214,7 +225,6 @@ p, option, input{
     flex: 1; 
     padding-right: 10px; 
 }
-
 
 #personalizar-section {
     font-family: 'Noto Sans', sans-serif;
@@ -236,14 +246,13 @@ p, option, input{
     
 }
 
-
 #close-personalizar {
     position: absolute;
     top: 10px;
     right: 10px;
     cursor: pointer;
-    width: 15px; 
-    height: 15px; 
+    width: 25px; 
+    height: 25px; 
     font-size: 16px; 
     display: flex;
     align-items: center;
@@ -251,18 +260,8 @@ p, option, input{
     transition: background-color 0.3s;
 }
 
-#close-personalizar:hover {
-    background-color: #ddd;
-}
-
 #personalizar-section.hidden {
     display: none;
-}
-
-
-.main-content {
-    margin-right: 260px;
-    padding: 20px;
 }
 
 .chart-container {
@@ -276,7 +275,7 @@ input, select, option {
     border: 1px solid #000; 
     padding: 8px;
     margin-top: 5px;
-    margin-bottom: 5px; 
+    margin-bottom: 5px;
     width: 100%;
     transition: background-color 0.3s, border-color 0.3s;
     background-color: #ffffff; 
@@ -294,6 +293,29 @@ input:hover, select:hover {
 
 #searchColumn {
     border: 1px solid #000; 
+    margin-top: 25px;
+}
+
+.date-input-container input[type="date"] {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 350;
+    font-size: 15px;
+    width: 100%;
+    border: 1px solid #959494; 
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background: none;
+    background-color: #ffffff; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    transition: background-color 0.3s, border-color 0.3s;
+    
+}
+
+.date-input-container input[type="date"]:focus {
+    border-color: #000;
+    background-color: #e0e0e0;
 }
 
 .inputColor {
@@ -306,7 +328,6 @@ input:hover, select:hover {
     margin: 0 auto; 
 }
 
-
 #p-colorPicker{
     color: black;
     font-family: 'Lato';
@@ -317,6 +338,7 @@ input:hover, select:hover {
     justify-content: center;
 
 }
+
 #colorPicker {
     display: none; 
 }
@@ -350,8 +372,53 @@ input:hover, select:hover {
 #addChartButton:hover {
     background-color: #333; 
 }
-#map {
-    height: 500px; /* Ajuste conforme necessário */
-    width: 100%;   /* Ajuste conforme necessário */
-    border: 1px solid #ccc; /* Opcional: para visualização */
+
+#charts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px; 
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 5px;
+    margin-left: 30px;
+    margin-bottom: 5px;
+    margin-right: 5px;
 }
+
+.chart-container {
+    width: 380px; 
+    height: 250px; 
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden; 
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.chart-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.chart-actions button {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.chart-actions button:hover {
+    background: #f0f0f0;
+}
+
+.hidden {
+    display: none;
+}
+

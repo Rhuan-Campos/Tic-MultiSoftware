@@ -12,24 +12,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
-    <style>
-        .hidden { display: none; }
-        .personalizar-section { padding: 20px; }
-        .chart-container { margin-bottom: 20px; }
-        #charts { padding: 20px; }
-        #colorDisplay { width: 30px; height: 30px; border: 1px solid #000; cursor: pointer; }
-        .inputColor { display: flex; align-items: center; gap: 10px; }
-        #map { height: 400px; width: 100%; }
-    </style>
 </head>
 <body>
     <div class="sidebar-off">
         <img src="/assets/sidebar.png" alt="menu" id="menu">
     </div>
 
-    <div class="sidebar">
-        <img src="/assets/close.png" alt="fechar" id="close-sidebar">
-        
+    <div class="sidebar light-mode">
+        <img src="/assets/d-close-sidebar.png" alt="fechar" id="d-close-sidebar">
+        <img src="/assets/w-close-sidebar.png" alt="fechar" id="w-close-sidebar">
         <img src="/assets/multiTMS.png" alt="logo MultiSoftware" id="profile">
         <h3>Menu</h3>
         <div class="menu">
@@ -38,28 +29,31 @@
                 <img src="/assets/dashboard.png" alt="icon de widget"> 
                 <p>Dashboard</p>
             </button>
-            
             <button id="personalizar">
                 <a href="javascript:void(0)"><i class="icon-personalizar"></i></a>
                 <img src="/assets/estilo.png" alt="icon de estilo">
                 <p>Personalizar</p>
             </button>
         </div>
+        <img src="/assets/expandir.png" alt="expandir tela" id="d-expandir">
+        <img src="/assets/w-expandir.png" alt="expandir tela" id="w-expandir">
+        <img src="/assets/dark.png" alt="tema escuro" id="dark-mode">
+        <img src="/assets/light.png" alt="tema claro" id="light-mode">
     </div>
 
     <div id="personalizar-section" class="personalizar-section hidden">
-        <img src="/assets/close.png" alt="fechar" id="close-personalizar">
-
-        <input type="text" id="searchColumn" placeholder="Pesquisar coluna..." />
-        <select id="columnSelect">
         
-        <label for="columnSelect">Selecione a coluna:</label>
+        <img src="/assets/close-personalizar.png" alt="fechar" id="close-personalizar">
+
+        <input type="text" id="searchColumn" placeholder="Digite para pesquisar...">
+        
         <select id="columnSelect">
             <option value="" disabled selected>Escolha uma coluna</option>
         </select>
         
-        <label for="chartTypeSelect">Selecione o modelo de gráfico:</label>
+        
         <select id="chartTypeSelect">
+            <option value="" disabled selected>Selecione o modelo de gráfico</option>
             <option value="Select">Selecione o modelo de gráfico</option>
             <option value="bar">Barra</option>
             <option value="line">Linha</option>
@@ -67,26 +61,35 @@
             <option value="area">Área</option>
             <option value="scatter">Dispersão</option>
             <option value="radar">Radar</option>
-            <option value="heatmap">Heatmap</option>
             <option value="candlestick">Candlestick</option>
             <option value="boxPlot">Boxplot</option>
-            <option value="map">Mapa</option> <!-- Nova opção de gráfico para o mapa -->
+            <option value="map">Mapa</option>
+            <option value="customAngleCircle">Círculo de Ângulo Personalizado</option>
+            <option value="semiCircleGauge">Medidor Semicírculo</option>
+            <option value="columnWithNegativeValues">Coluna com Valores Negativos</option>
+            <option value="lineColumn">Linha e Coluna</option>
+            <option value="bubble">Bolha</option>
+            <option value="donut">Rosca</option>
+            
         </select>
+
+        <div class="date-input-container">
+            <input type="date" id="startDate" placeholder="Selecione a data inicial">
+            <input type="date" id="endDate" placeholder="Selecione a data final">
+        </div>
         
         <div class="inputColor">
             <label for="colorPicker" id="p-colorPicker">Selecione a cor do gráfico:</label>
             <div id="colorDisplay"></div>
             <input type="color" id="colorPicker" name="colorPicker">
         </div>
+        
 
+        
         <button id="addChartButton">Adicionar Gráfico</button>
     </div>
 
     <div id="charts"></div>
-
-    <!-- Inclusão do Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
     <script src="main.js" defer></script>
 </body>
