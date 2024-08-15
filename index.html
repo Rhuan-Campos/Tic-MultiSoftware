@@ -54,7 +54,7 @@
         
         <select id="chartTypeSelect">
             <option value="" disabled selected>Selecione o modelo de gráfico</option>
-            <option value="Select">Selecione o modelo de gráfico</option>
+            <option value="Select">Selecione o modelo de gráfico</option> 
             <option value="bar">Barra</option>
             <option value="line">Linha</option>
             <option value="pie">Pizza</option>
@@ -88,6 +88,11 @@
         
         <button id="addChartButton">Adicionar Gráfico</button>
     </div>
+
+    <div id="failedMessage" class="message hidden">Nenhum gráfico adicionado.</div>
+    <div id="inputColumnMessage" class="message hidden">Por favor, selecione uma coluna.</div>
+    <div id="successMessage" class="message hidden">Gráfico criado com sucesso!</div>
+
 
     <div id="charts"></div>
 

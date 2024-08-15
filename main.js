@@ -17,6 +17,13 @@
 //     const chartTypeSelect = document.getElementById("chartTypeSelect");
 //     const addChartButton = document.getElementById("addChartButton");
 
+
+//     const failedMessage = document.getElementById("failedMessage");
+//     const inputColumnMessage = document.getElementById("inputColumnMessage");
+//     const successMessage = document.getElementById("successMessage");
+
+
+
 //     let allColumns = [];
 //     let chartCache = {}; 
 
@@ -37,6 +44,22 @@
 //         sidebar.classList.remove("hidden");
 //         sidebarOff.classList.add("hidden");
 //     }
+
+
+
+
+
+
+//      function showMessage(messageElement) {
+//          messageElement.style.display = 'flex'; 
+//          setTimeout(() => {
+//              messageElement.style.display = 'none'; 
+//          }, 3000);
+//      }
+//      
+
+
+
 
 //     personalizarButton.addEventListener("click", () => {
 //         if (personalizarSection.classList.contains("hidden")) {
@@ -382,7 +405,7 @@
 //         const selectedColor = colorPicker.value;
     
 //         if (!selectedColumn) {
-//             alert("Por favor, selecione uma coluna.");
+//             showMessage(inputColumnMessage);
 //             return;
 //         }
     
@@ -494,7 +517,7 @@
 //                     }
 //                 });
     
-//             alert("Gráfico adicionado com sucesso!"); 
+//             showMessage(successMessage);
 //         });
 //     }
     
@@ -526,7 +549,7 @@
     
 //     dashboardButton.addEventListener("click", () => {
 //         if (chartsContainer.children.length === 0) {
-//             alert("Não há gráficos adicionados.");
+//             showMessage(failedMessage);
 //         } else {
 //             hideSidebar();
 //             Array.from(chartsContainer.children).forEach(child => {
