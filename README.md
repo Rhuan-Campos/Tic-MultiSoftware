@@ -31,6 +31,6 @@ O Trello é uma plataforma de gerenciamento de projetos baseada em quadros, que 
 ### 🙆‍♀️🙅💁🙋 Conheça o grupo responsável pelo projeto:
 
 - 💬 Alessandro Côrrea: https://www.linkedin.com/in/alessandro-correa-644551223/
-- 💬 Gustavo Botezini 
+- 💬 Gustavo Botezini https://www.linkedin.com/in/gustavo-botezini-0144a32b6/
 - 💬 Jesuane Käfer: https://www.linkedin.com/in/jesuanekafer/
 - 💬 Rhuan Lehmen: https://www.linkedin.com/in/rhuan-leite/
