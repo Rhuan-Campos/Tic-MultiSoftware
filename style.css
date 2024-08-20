@@ -239,12 +239,17 @@ p{
     padding: 20px 30px;
     overflow-y: auto;
     box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-    z-index: 1000;
+    z-index: 1001; /* Mantenha o z-index alto */
     display: flex;
     align-items: center;
     flex-direction: column;
-    
 }
+
+.inputColor {
+    position: relative; /* ou absolute, conforme sua necessidade */
+    z-index: 1; /* z-index inferior para que fique atrás */
+}
+
 
 #close-personalizar {
     position: absolute;
@@ -340,8 +345,12 @@ input:hover, select:hover {
 }
 
 #colorPicker {
-    display: none; 
+    position: absolute; 
+    top: 11px; /* Ajuste esse valor conforme necessário */
+    left: 2px; /* Ajuste esse valor conforme necessário */
+    z-index: 10; 
 }
+
 
 #colorDisplay {
     display: flex;
@@ -355,7 +364,6 @@ input:hover, select:hover {
     border: 2px solid #000; 
     background-color: red; 
     display: inline-block;
-    margin-bottom: 10px; 
 }
 
 #addChartButton { 

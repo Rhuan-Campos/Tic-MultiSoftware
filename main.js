@@ -19,9 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const failedMessage = document.getElementById("failedMessage");
     const inputColumnMessage = document.getElementById("inputColumnMessage");
     const successMessage = document.getElementById("successMessage");
+    const startDateInput = document.getElementById("startDate");
+    const endDateInput = document.getElementById("endDate");
 
 
-
+    
     let allColumns = [];
     let chartCache = {}; 
 
@@ -89,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function fetchColumns() {
         try {
-            const response = await fetch("http://localhost:8000/columns");
+            const response = await fetch("http://localhost:8000/columns", { timeout: 10000 }); // Increase the timeout to 10 seconds
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -101,11 +103,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    async function fetchUniqueCounts(column) {
+    async function fetchUniqueCounts(column, data_inicio, data_fim) {
         try {
-            const response = await fetch(`http://localhost:8000/unique_counts/${column}`);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+            const response = await fetch(`http://localhost:8000/unique_counts/${column}/${data_inicio}/${data_fim}`);
+            if (!response.ok) { 
+                const errorText = await response.text();
+                throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
             }
             const data = await response.json();
             return data.unique_counts;
@@ -114,6 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
             return {};
         }
     }
+    
+
 
     function generateColors(numColors) {
         const colors = [];
@@ -401,22 +406,31 @@ document.addEventListener("DOMContentLoaded", () => {
         const selectedColumn = columnSelect.value;
         const selectedChartType = chartTypeSelect.value;
         const selectedColor = colorPicker.value;
+        const selectedStartDate = startDateInput.value;
+        const selectedEndDate = endDateInput.value;
     
         if (!selectedColumn) {
             showMessage(inputColumnMessage);
             return;
         }
     
-        fetchUniqueCounts(selectedColumn).then(uniqueCounts => {
+        fetchUniqueCounts(selectedColumn, selectedStartDate, selectedEndDate).then(uniqueCounts => {
             const categories = Object.keys(uniqueCounts);
             const data = Object.values(uniqueCounts);
     
             const chartContainer = document.createElement("div");
-            chartContainer.className = "chart-container hidden"; 
-    
+            chartContainer.className = "chart-container hidden";
+
+            chartContainer.addEventListener("mouseover", () => {
+                interact(chartContainer).draggable(false);
+            });
+            
+            chartContainer.addEventListener("mouseout", () => {
+                interact(chartContainer).draggable(true);
+            });
             const chartActions = document.createElement("div");
             chartActions.className = "chart-actions";
-    
+
             const colorButton = document.createElement("button");
             colorButton.innerHTML = '<i class="fas fa-palette"></i>';
             colorButton.onclick = () => {
@@ -448,6 +462,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const moveButton = document.createElement("button");
             moveButton.innerHTML = '<i class="fas fa-arrows-alt"></i>';
     
+            const newMoveButton = document.createElement("button");
+            newMoveButton.innerHTML = '<i class="fas fa-arrows-alt"></i>';
+            newMoveButton.id = "toggle-drag-btn";
+
             const resizeButton = document.createElement("button");
             resizeButton.innerHTML = '<i class="fas fa-expand"></i>';
     
@@ -463,6 +481,7 @@ document.addEventListener("DOMContentLoaded", () => {
             chartActions.appendChild(moveButton);
             chartActions.appendChild(resizeButton);
             chartActions.appendChild(removeButton);
+            chartActions.appendChild(newMoveButton);
             chartContainer.appendChild(chartActions);
     
             const chartElement = document.createElement("div");
@@ -519,6 +538,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
     
+    
     fetchColumns().then(columns => {
         allColumns = columns;
         columns.forEach(column => {
@@ -543,6 +563,11 @@ document.addEventListener("DOMContentLoaded", () => {
     
     addChartButton.addEventListener("click", () => {
         addChart(); 
+        const toolbar = chartElement.querySelector('.apexcharts-toolbar');
+        // console.log("Querendo remover toolbar", toolbar);
+        // if (toolbar) {
+        //     toolbar.remove();
+        // }
     });
     
     dashboardButton.addEventListener("click", () => {
