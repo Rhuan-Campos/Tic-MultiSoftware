@@ -421,68 +421,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const chartContainer = document.createElement("div");
             chartContainer.className = "chart-container hidden";
 
-            chartContainer.addEventListener("mouseover", () => {
-                interact(chartContainer).draggable(false);
-            });
-            
-            chartContainer.addEventListener("mouseout", () => {
-                interact(chartContainer).draggable(true);
-            });
             const chartActions = document.createElement("div");
             chartActions.className = "chart-actions";
-
-            const colorButton = document.createElement("button");
-            colorButton.innerHTML = '<i class="fas fa-palette"></i>';
-            colorButton.onclick = () => {
-                const newColor = prompt("Digite a nova cor em formato hexadecimal:", selectedColor);
-                if (newColor) {
-                    chart.updateOptions({ colors: [newColor] });
-                }
-            };
     
-            const columnButton = document.createElement("button");
-            columnButton.innerHTML = '<i class="fas fa-columns"></i>';
-            columnButton.onclick = async () => {
-                const newColumn = prompt("Digite o nome da nova coluna:", selectedColumn);
-                if (newColumn) {
-                    const uniqueCounts = await fetchUniqueCounts(newColumn);
-                    const categories = Object.keys(uniqueCounts);
-                    const data = Object.values(uniqueCounts);
-                    chart.updateOptions({ 
-                        chart: { height: 350, type: selectedChartType },
-                        series: [{
-                            name: "Quantidade",
-                            data: data
-                        }],
-                        xaxis: { categories: categories }
-                    });
-                }
-            };
-    
-            const moveButton = document.createElement("button");
-            moveButton.innerHTML = '<i class="fas fa-arrows-alt"></i>';
-    
-            const newMoveButton = document.createElement("button");
-            newMoveButton.innerHTML = '<i class="fas fa-arrows-alt"></i>';
-            newMoveButton.id = "toggle-drag-btn";
-
-            const resizeButton = document.createElement("button");
-            resizeButton.innerHTML = '<i class="fas fa-expand"></i>';
-    
-            const removeButton = document.createElement("button");
-            removeButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
-            removeButton.onclick = () => {
-                chartsContainer.removeChild(chartContainer);
-                delete chartCache[selectedColumn]; 
-            };
-    
-            chartActions.appendChild(colorButton);
-            chartActions.appendChild(columnButton);
-            chartActions.appendChild(moveButton);
-            chartActions.appendChild(resizeButton);
-            chartActions.appendChild(removeButton);
-            chartActions.appendChild(newMoveButton);
-            chartContainer.appendChild(chartActions);
     
             const chartElement = document.createElement("div");
             chartContainer.appendChild(chartElement);
@@ -510,20 +451,17 @@ document.addEventListener("DOMContentLoaded", () => {
                     edges: { left: true, right: true, bottom: true, top: true },
                     listeners: {
                         move(event) {
-                            let { x, y } = event.target.dataset;
-    
-                            x = (parseFloat(x) || 0) + event.dx;
-                            y = (parseFloat(y) || 0) + event.dy;
-    
+                            // Calcula a nova largura e altura do elemento
+                            const newWidth = `${event.rect.width}px`;
+                            const newHeight = `${event.rect.height}px`;
+                        
+                            // Aplica a nova largura e altura ao elemento
                             Object.assign(event.target.style, {
-                                width: `${event.rect.width}px`,
-                                height: `${event.rect.height}px`,
-                                transform: `translate(${x}px, ${y}px)`
+                                width: newWidth,
+                                height: newHeight
                             });
-    
-                            event.target.dataset.x = x;
-                            event.target.dataset.y = y;
-    
+                        
+                            // Atualiza as opções do gráfico com as novas dimensões
                             chart.updateOptions({
                                 chart: {
                                     height: event.rect.height,

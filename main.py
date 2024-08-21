@@ -3,11 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import pandas as pd
 from datetime import datetime
-import uvicorn
-import os
 from starlette.responses import JSONResponse
 from fastapi import HTTPException
-
 from database_access import DatabaseConnector 
 from database_access import multi_db_config
 

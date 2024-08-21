@@ -183,18 +183,32 @@ p{
     align-items: center;
 }
 
-.sidebar #dashboard, #personalizar {
+.sidebar {
+    display: flex;
+    flex-direction: column; /* Organiza os elementos em coluna */
+    align-items: center; /* Centraliza os itens horizontalmente dentro da sidebar */
+}
+
+.sidebar #dashboard, 
+.sidebar #personalizar {
     width: 220px;
     border-radius: 8px;
     border: 1px solid #242323; 
-    margin-bottom: 8px;
+    margin-bottom: 16px; /* Aumenta o espaçamento entre os elementos */
     padding: 10px; 
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 10px;
     transition: background-color 0.3s ease, transform 0.3s ease; /* Adiciona transição suave para hover */
+    margin: 0 auto; /* Centraliza horizontalmente */
 }
+
+.sidebar #personalizar {
+    margin-top: 10px; /* Remove o espaço abaixo do último elemento, se necessário */
+}
+
+
 
 .sidebar #dashboard:hover, .sidebar #personalizar:hover {
     background-color: #c9c5c5; 
