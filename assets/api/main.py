@@ -5,8 +5,8 @@ import pandas as pd
 from datetime import datetime
 from starlette.responses import JSONResponse
 from fastapi import HTTPException
-from database_access import DatabaseConnector 
-from database_access import multi_db_config
+from api.database_access import DatabaseConnector 
+from api.database_access import multi_db_config
 
 app = FastAPI() 
 
