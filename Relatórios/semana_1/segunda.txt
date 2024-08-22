@@ -1,5 +1,0 @@
-26/02
-
--Criação do repositório no Git Hub;
--Pré definição do canva do projeto;
--Seleção de perguntas paea a visita na empresa 

@@ -1,0 +1,493 @@
+* {
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    font-size: .875rem;
+    background: rgb(219, 218, 218);
+    color: #ffffff;
+}
+
+input[type="text"], select, input[type="color"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+h3 {
+    font-size: 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+}
+
+h3, p {
+    color: black;
+}
+
+p{
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 350;
+    margin-bottom: .5rem;
+    line-height: 1.3rem;
+}
+
+.sidebar.hidden {
+    display: none;
+}
+
+.sidebar-off.hidden {
+    display: none;
+}
+
+#menu {
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 25px; 
+    height: 25px; 
+    cursor: pointer;
+}
+
+.sidebar {
+    width: 260px;
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 20px 30px;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    transition: background-color 0.3s, color 0.3s;
+    z-index: 2000;
+}
+
+.sidebar.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.sidebar.dark-mode {
+    background-color: #000000;
+    color: #ffffff;
+}
+.sidebar.dark-mode h3{
+    color: #fff;
+}
+
+#dark-mode, #light-mode {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    position: fixed;
+    top: 23px;
+    left: 10px;
+    display: none;
+}
+
+#dark-mode {
+    display: block;
+}
+
+.sidebar.dark-mode #dark-mode {
+    display: none;
+}
+
+.sidebar.dark-mode #light-mode {
+    display: block;
+}
+
+.sidebar.light-mode #dark-mode {
+    display: block;
+}
+
+.sidebar.light-mode #light-mode {
+    display: none;
+}
+
+#d-expandir, #w-expandir{
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    display: none;
+}
+
+.light-mode #d-expandir {
+    display: none;
+}
+
+.light-mode #w-expandir {
+    display: block;
+}
+
+.dark-mode #w-expandir {
+    display: none;
+}
+.dark-mode #d-expandir {
+    display: block;
+}
+
+#d-close-sidebar, #w-close-sidebar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    padding: 5%;
+    width: 25px;
+    height: 20px;
+}
+
+.light-mode #d-close-sidebar {
+    display: block;
+}
+.light-mode #w-close-sidebar {
+    display: none;
+}
+
+.dark-mode #w-close-sidebar {
+    display: block;
+}
+.dark-mode #d-close-sidebar {
+    display: none;
+}
+
+#profile {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    padding-top: 50px;
+
+}
+
+.sidebar img {
+    width: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column; /* Organiza os elementos em coluna */
+    align-items: center; /* Centraliza os itens horizontalmente dentro da sidebar */
+}
+
+.sidebar #dashboard, 
+.sidebar #personalizar {
+    width: 220px;
+    border-radius: 8px;
+    border: 1px solid #242323; 
+    margin-bottom: 16px; /* Aumenta o espaçamento entre os elementos */
+    padding: 10px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Adiciona transição suave para hover */
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+.sidebar #personalizar {
+    margin-top: 10px; /* Remove o espaço abaixo do último elemento, se necessário */
+}
+
+
+
+.sidebar #dashboard:hover, .sidebar #personalizar:hover {
+    background-color: #c9c5c5; 
+    transform: translateY(-5px); 
+}
+
+.menu div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 10px; 
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+}
+
+.menu div:hover {
+    background-color: #000000; 
+    transform: translateY(-5px); 
+}
+
+.menu img {
+    max-width: 50px; 
+    margin-left: 8px; 
+}
+
+.menu p {
+    margin: 0;
+    text-align: left; 
+    flex: 1; 
+    padding-right: 10px; 
+}
+
+#personalizar-section {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    width: 260px;
+    background-color: #ffffff;
+    position: fixed;
+    top: 50%; 
+    right: 0;
+    transform: translateY(-50%); 
+    border-radius: 10px;
+    padding: 20px 30px;
+    overflow-y: auto;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    z-index: 1001; /* Mantenha o z-index alto */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.inputColor {
+    position: relative; /* ou absolute, conforme sua necessidade */
+    z-index: 1; /* z-index inferior para que fique atrás */
+}
+
+
+#close-personalizar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    width: 25px; 
+    height: 25px; 
+    font-size: 16px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+#personalizar-section.hidden {
+    display: none;
+}
+
+.chart-container {
+    margin-bottom: 20px;
+}
+
+input, select, option {
+    font-family: 'Noto Sans', sans-serif; 
+    font-weight: 350; 
+    font-size: 15px; 
+    border: 1px solid #000; 
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    transition: background-color 0.3s, border-color 0.3s;
+    background-color: #ffffff; 
+}
+
+input:focus, select:focus {
+    border-color: #000; 
+    outline: none;
+    background-color: #e0e0e0; 
+}
+
+input:hover, select:hover {
+    background-color: #d7d4d4; 
+}
+
+#searchColumn {
+    border: 1px solid #000; 
+    margin-top: 25px;
+}
+
+.date-input-container input[type="date"] {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 350;
+    font-size: 15px;
+    width: 100%;
+    border: 1px solid #959494; 
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background: none;
+    background-color: #ffffff; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    transition: background-color 0.3s, border-color 0.3s;
+    
+}
+
+.date-input-container input[type="date"]:focus {
+    border-color: #000;
+    background-color: #e0e0e0;
+}
+
+.inputColor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%; 
+    max-width: 400px; 
+    margin: 0 auto; 
+}
+
+#p-colorPicker{
+    color: black;
+    font-family: 'Lato';
+    font-size: 15px;
+    font-weight: 350;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#colorPicker {
+    position: absolute; 
+    top: 11px; /* Ajuste esse valor conforme necessário */
+    left: 2px; /* Ajuste esse valor conforme necessário */
+    z-index: 10; 
+}
+
+
+#colorDisplay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: 10px; 
+    margin-bottom: 10px;
+    border: 2px solid #000; 
+    background-color: red; 
+    display: inline-block;
+}
+
+#addChartButton { 
+    padding: 5px;
+    margin-top: 10px;
+    background-color: #000; 
+    color: #fff; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#addChartButton:hover {
+    background-color: #333; 
+}
+
+#charts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px; 
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 5px;
+    margin-left: 30px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.chart-container {
+    width: 380px; 
+    height: 250px; 
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden; 
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.chart-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.chart-actions button {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.chart-actions button:hover {
+    background: #f0f0f0;
+}
+
+
+#failedMessage, #inputColumnMessage, #successMessage {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    color: #000;
+    padding: 5px;
+    background-color: white;
+    position: absolute; 
+    width: fit-content;
+    min-width: 250px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    right: 0px; 
+    top: 5px;
+    display: none;
+}
+
+
+
+#failedMessage::after, #inputColumnMessage::after, #successMessage::after {
+    content: '';
+    display: block;
+    width: 100%; 
+    height: 4px; 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#failedMessage::after {
+    background-color: rgb(235, 13, 13);
+}
+
+#inputColumnMessage::after{
+    background-color: rgb(55, 181, 223);
+}
+
+#successMessage::after {
+    background-color: rgb(25, 128, 47);
+}
+
+.hidden {
+    display: none;
+}
+
