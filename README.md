@@ -13,14 +13,20 @@ Este repositório abriga o trabalho prático do Grupo 9 de residência em TIC da
 #### - Visual Studio Code:
 O VS Code é um ambiente de desenvolvimento integrado (IDE) ótimo para se trabalhar com Python, oferecendo recursos avançados que facilitam o desenvolvimento de aplicações com Python.
 
-#### - Framework Streamlit.io:
-Streamlit é uma biblioteca do Python que facilita a criação de aplicativos da web interativos para análise de dados e prototipagem rápida.
+#### - Framework FastAPI:
+FastAPI é um framework web moderno e rápido para construir APIs com Python, oferecendo agilidade para o desenvolvimento de aplicações robustas e de alto desempenho.
+
+#### - Framework Apex Charts:
+ApexCharts é uma biblioteca de gráficos JavaScript que permite a criação de gráficos interativos e responsivos para visualização de dados.
 
 #### - Linguagem Python:
 Python é uma linguagem de programação de alto nível, interpretada e de propósito geral, conhecida por sua simplicidade, legibilidade e vasta gama de bibliotecas.
 
 #### - Python Pandas:
 Pandas é uma biblioteca de código aberto em Python amplamente utilizada para manipulação e análise de dados. Ela oferece estruturas de dados poderosas, como o DataFrame, que permite trabalhar com dados de forma eficiente, realizar operações de limpeza, transformação, agregação e visualização.
+
+#### - SQL Server:
+O banco de dados é gerenciado pelo SQL Server, oferecendo uma solução robusta, escalável e eficiente para armazenamento e consulta de dados.
 
 #### - Git:
 Sistema de controle de versão amplamente usado para rastreamento e gerenciamento de alterações no código-fonte.
